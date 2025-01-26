@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://b58ejvr01tlgy"]
+
+[ext_resource type="Script" path="res://Todo/Scripts/todo.gd" id="1_yk6u7"]
+[ext_resource type="PackedScene" uid="uid://matxvjtdly44" path="res://Todo/Scenes/TodoItem.tscn" id="2_kubmg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkp0g"]
+bg_color = Color(0.167523, 0.391967, 0.326191, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_sb6sn"]
+
+[node name="Todo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yk6u7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.181225, 0.217531, 0.215339, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TodoContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TodoItem" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/TodoContainer" instance=ExtResource("2_kubmg")]
+layout_mode = 2
+
+[node name="TodoItem2" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/TodoContainer" instance=ExtResource("2_kubmg")]
+layout_mode = 2
+
+[node name="TodoItem3" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/TodoContainer" instance=ExtResource("2_kubmg")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Add Todo.md"
+
+[node name="AddTodo" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "+"
+
+[node name="SaveContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = -70.0
+offset_right = 74.0
+offset_bottom = -27.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkp0g")
+
+[node name="MarginContainer" type="MarginContainer" parent="SaveContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="SaveContainer/MarginContainer"]
+layout_mode = 2
+text = "Saving"
+label_settings = SubResource("LabelSettings_sb6sn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/AddTodo" to="." method="_on_add_todo_pressed"]
