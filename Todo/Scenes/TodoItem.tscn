@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://matxvjtdly44"]
 
-[ext_resource type="Script" path="res://Todo/Scripts/todo_item.gd" id="1_e7wog"]
+[ext_resource type="Script" uid="uid://ct060ci3lqini" path="res://Todo/Scripts/todo_item.gd" id="1_e7wog"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8dcq"]
 
